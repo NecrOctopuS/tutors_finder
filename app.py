@@ -5,17 +5,17 @@ from data_tools import get_profile_from_json_by_id, get_profile_goals, get_free_
 from flask_wtf import FlaskForm
 from wtforms import StringField, RadioField, SubmitField, HiddenField
 from wtforms.validators import InputRequired, Length
-from dotenv import load_dotenv
-import os
+from environs import Env
 
 app = Flask(__name__)
-load_dotenv()
+env = Env()
+env.read_env()
 
-app.secret_key = os.getenv('SECRET_KEY', 'my-super-secret-phrase-I-dont-tell-this-to-nobody')
-GOALS_JSON_PATH = os.getenv('GOALS_JSON_PATH', 'goals.json')
-TEACHERS_JSON_PATH = os.getenv('TEACHERS_JSON_PATH', 'teachers.json')
-REQUESTS_JSON_PATH = os.getenv('REQUESTS_JSON_PATH', 'request.json')
-PROFILE_NUMBERS_PER_MAIN_PAGE = int(os.getenv('PROFILE_NUMBERS_PER_MAIN_PAGE', 6))
+app.secret_key = env.str('SECRET_KEY', 'my-super-secret-phrase-I-dont-tell-this-to-nobody')
+GOALS_JSON_PATH = env.str('GOALS_JSON_PATH', 'goals.json')
+TEACHERS_JSON_PATH = env.str('TEACHERS_JSON_PATH', 'teachers.json')
+REQUESTS_JSON_PATH = env.str('REQUESTS_JSON_PATH', 'request.json')
+PROFILE_NUMBERS_PER_MAIN_PAGE = int(env.str('PROFILE_NUMBERS_PER_MAIN_PAGE', 6))
 GOALS = get_goals_for_request_form(GOALS_JSON_PATH)
 
 
