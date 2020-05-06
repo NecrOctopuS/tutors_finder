@@ -1,6 +1,7 @@
 # Поиск репетиторов
 
 Сайт на Flask.
+Пример можно посмотреть на [Heroku](https://demo-tutors-finder.herokuapp.com/).
 
 ## Запуск
 
