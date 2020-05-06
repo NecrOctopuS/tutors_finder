@@ -15,7 +15,7 @@ app.secret_key = os.getenv('SECRET_KEY', 'my-super-secret-phrase-I-dont-tell-thi
 GOALS_JSON_PATH = os.getenv('GOALS_JSON_PATH', 'goals.json')
 TEACHERS_JSON_PATH = os.getenv('TEACHERS_JSON_PATH', 'teachers.json')
 REQUESTS_JSON_PATH = os.getenv('REQUESTS_JSON_PATH', 'request.json')
-PROFILE_NUMBERS_PER_MAIN_PAGE = os.getenv('PROFILE_NUMBERS_PER_MAIN_PAGE', 6)
+PROFILE_NUMBERS_PER_MAIN_PAGE = int(os.getenv('PROFILE_NUMBERS_PER_MAIN_PAGE', 6))
 GOALS = get_goals_for_request_form(GOALS_JSON_PATH)
 
 
