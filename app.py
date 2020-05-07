@@ -44,13 +44,16 @@ def render_request():
     form = RequestForm()
     goals = get_goals_for_request_form(GOALS_JSON_PATH)
     form.goal.choices = goals
-    form.goal.data = goals[0][0]
+    form.goal.default = goals[0][0]
+    form.process()
     return render_template('request.html', form=form)
 
 
 @app.route('/request_done/', methods=["POST"])
 def render_request_done():
+    goals = get_goals_for_request_form(GOALS_JSON_PATH)
     form = RequestForm()
+    form.goal.choices = goals
     if form.validate():
         goals = read_json(GOALS_JSON_PATH)
         goal = form.goal.data
